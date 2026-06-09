@@ -975,9 +975,10 @@ body.menu-open .menu-toggle span:nth-child(3) {
   }
 
   .product-gallery-title {
-    padding: 0.62rem 0.8rem 0.72rem;
-    font-size: clamp(1.12rem, 5vw, 1.45rem);
-    letter-spacing: 0.035em;
+    padding: 0.52rem 0.5rem 0.62rem;
+    font-size: clamp(0.88rem, 3.6vw, 1.04rem);
+    letter-spacing: 0.015em;
+    white-space: nowrap;
   }
 
   .footer-brand,
