@@ -976,7 +976,7 @@ body.menu-open .menu-toggle span:nth-child(3) {
 
   .product-gallery-title {
     padding: 0.45rem 0.45rem 0.54rem;
-    font-size: clamp(0.64rem, 2.45vw, 0.82rem);
+    font-size: clamp(0.8rem, 3.2vw, 0.96rem);
     letter-spacing: 0;
     text-transform: none;
     line-height: 1.05;
@@ -994,7 +994,7 @@ body.menu-open .menu-toggle span:nth-child(3) {
   }
 
   .section-head h3 {
-    font-size: clamp(0.72rem, 2.6vw, 0.88rem);
+    font-size: clamp(0.78rem, 3vw, 0.95rem);
     letter-spacing: 0;
     text-transform: none;
     line-height: 1.05;
@@ -1059,13 +1059,13 @@ body.menu-open .menu-toggle span:nth-child(3) {
 
 @media (max-width: 380px) {
   .product-gallery-title {
-    font-size: clamp(0.6rem, 2.5vw, 0.72rem);
-    letter-spacing: 0.004em;
+    font-size: clamp(0.74rem, 3vw, 0.88rem);
+    letter-spacing: 0;
     padding: 0.4rem 0.35rem 0.48rem;
   }
 
   .section-head h3 {
-    font-size: clamp(0.66rem, 2.7vw, 0.8rem);
+    font-size: clamp(0.72rem, 2.95vw, 0.86rem);
     letter-spacing: 0;
   }
 
