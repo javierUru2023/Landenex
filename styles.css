@@ -976,19 +976,28 @@ body.menu-open .menu-toggle span:nth-child(3) {
 
   .product-gallery-title {
     padding: 0.45rem 0.45rem 0.54rem;
-    font-size: clamp(0.74rem, 3.05vw, 0.9rem);
-    letter-spacing: 0.008em;
+    font-size: clamp(0.64rem, 2.45vw, 0.82rem);
+    letter-spacing: 0;
+    text-transform: none;
+    line-height: 1.05;
     white-space: nowrap;
   }
 
   .section-head {
-    gap: 0.55rem;
+    gap: 0.4rem;
     margin-bottom: 0.9rem;
+    justify-content: center;
+  }
+
+  .section-head span {
+    display: none;
   }
 
   .section-head h3 {
-    font-size: clamp(0.86rem, 3.35vw, 1rem);
-    letter-spacing: 0.01em;
+    font-size: clamp(0.72rem, 2.6vw, 0.88rem);
+    letter-spacing: 0;
+    text-transform: none;
+    line-height: 1.05;
     white-space: nowrap;
   }
 
@@ -1050,14 +1059,14 @@ body.menu-open .menu-toggle span:nth-child(3) {
 
 @media (max-width: 380px) {
   .product-gallery-title {
-    font-size: clamp(0.66rem, 2.8vw, 0.76rem);
+    font-size: clamp(0.6rem, 2.5vw, 0.72rem);
     letter-spacing: 0.004em;
     padding: 0.4rem 0.35rem 0.48rem;
   }
 
   .section-head h3 {
-    font-size: clamp(0.74rem, 3vw, 0.84rem);
-    letter-spacing: 0.006em;
+    font-size: clamp(0.66rem, 2.7vw, 0.8rem);
+    letter-spacing: 0;
   }
 
   .section-head {
