@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 64" role="img" aria-label="Landenex figuras">
+  <defs>
+    <linearGradient id="g-red" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff4861"/>
+      <stop offset="1" stop-color="#c60028"/>
+    </linearGradient>
+    <linearGradient id="g-yellow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffd94a"/>
+      <stop offset="1" stop-color="#ffb700"/>
+    </linearGradient>
+    <linearGradient id="g-blue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4e86e8"/>
+      <stop offset="1" stop-color="#0f3f97"/>
+    </linearGradient>
+  </defs>
+
+  <path d="M1.5 50L4.5 31H40L37.5 50Z" fill="url(#g-red)" stroke="#ff6f84" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M42 50A18 18 0 0 1 78 50Z" fill="url(#g-yellow)" stroke="#ffe277" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M81 50L86 18L126.5 35.5L124.5 50Z" fill="url(#g-blue)" stroke="#78a7ff" stroke-width="1.8" stroke-linejoin="round"/>
+</svg>

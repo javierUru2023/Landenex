@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Valla Publicitaria",
+    "image": "img/proyectos/valla-publicitaria.jpg",
+    "alt": "Valla publicitaria instalada en ruta"
+  },
+  {
+    "title": "Cartel de Fachada",
+    "image": "img/proyectos/cartel-fachada.jpg",
+    "alt": "Cartel de fachada para local comercial"
+  },
+  {
+    "title": "Cartel de Obra",
+    "image": "img/proyectos/cartel-obra.jpg",
+    "alt": "Cartel de obra en estructura metalica"
+  },
+  {
+    "title": "Pantalla LED",
+    "image": "img/proyectos/pantalla-led.jpg",
+    "alt": "Pantalla led para publicidad exterior"
+  },
+  {
+    "title": "Totem Publicitario",
+    "image": "img/proyectos/totem-publicitario.jpg",
+    "alt": "Totem publicitario de alto impacto"
+  },
+  {
+    "title": "Cartel de Ruta",
+    "image": "img/proyectos/cartel-ruta.jpg",
+    "alt": "Cartel de ruta con grafica institucional"
+  }
+]

@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LANDENEX</title>
+    <meta
+      name="description"
+      content="Landenex: carteleria exterior, rotulos, impresion gran formato y soluciones visuales para tu marca."
+    />
+    <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Saira+Semi+Condensed:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-shape bg-shape-left" aria-hidden="true"></div>
+    <div class="bg-shape bg-shape-right" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <nav class="top-nav container" aria-label="Principal">
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Abrir menu"
+          aria-expanded="false"
+          aria-controls="menu-principal"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-links" id="menu-principal">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#proyectos">Carteleria exterior</a></li>
+          <li><a href="#impresiones">Impresiones</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="menu-backdrop" aria-hidden="true"></div>
+
+    <main id="inicio">
+      <section class="hero container reveal">
+        <div class="hero-banner">
+          <img
+            src="img/bannerLandenex.png"
+            alt="Logo Landenex"
+          />
+        </div>
+      </section>
+
+      <section class="product-gallery reveal" id="impresiones" aria-label="Galeria de productos">
+        <h3 class="product-gallery-title">Tu imagen sobre cualquier superficie</h3>
+        <div class="product-gallery-stage">
+          <figure class="product-shot is-active">
+            <img class="product-shot-focus-low" src="img/proceso-01-diseno.jpg" alt="Fase de diseno conceptual para carteleria" loading="eager" />
+          </figure>
+          <figure class="product-shot">
+            <img src="img/proceso-02-preprensa.jpg" alt="Ajustes de archivo y preparacion para impresion" loading="lazy" />
+          </figure>
+          <figure class="product-shot">
+            <img src="img/proceso-03-impresion.jpg" alt="Proceso de impresion de banners y piezas graficas" loading="lazy" />
+          </figure>
+          <figure class="product-shot">
+            <img src="img/proceso-04-terminacion.jpg" alt="Terminacion, corte y control de calidad" loading="lazy" />
+          </figure>
+          <figure class="product-shot">
+            <img src="img/proceso-05-armado.jpg" alt="Armado de estructuras y piezas de carteleria" loading="lazy" />
+          </figure>
+          <figure class="product-shot">
+            <img src="img/proceso-06-instalacion.jpg" alt="Instalacion final en local o via publica" loading="lazy" />
+          </figure>
+        </div>
+      </section>
+
+      <section class="projects container reveal" id="proyectos">
+        <div class="section-head">
+          <span></span>
+          <h3>Nuestros proyectos mas recientes</h3>
+          <span></span>
+        </div>
+
+        <div class="project-carousel" aria-label="Galeria de proyectos">
+          <div class="carousel-track" id="projects-track"></div>
+        </div>
+      </section>
+
+      <section class="cta container reveal" id="cotizar">
+        <a class="cta-button" href="#contacto">Solicita tu cotizacion</a>
+      </section>
+
+      <section class="contact container reveal" id="contacto">
+        <div>
+          <p class="kicker">Contacto</p>
+          <h3>Contanos que necesitás y te respondemos rapido</h3>
+          <p>
+            Esta base ya esta lista para conectar con WhatsApp, formulario o tu
+            CRM comercial.
+          </p>
+        </div>
+        <form class="contact-form">
+          <label>
+            Nombre
+            <input type="text" placeholder="Tu nombre" />
+          </label>
+          <label>
+            Email
+            <input type="email" placeholder="nombre@empresa.com" />
+          </label>
+          <label>
+            Proyecto
+            <textarea rows="4" placeholder="Contanos que tipo de cartel o impresion necesitas"></textarea>
+          </label>
+          <button type="button">Enviar consulta</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-shell">
+        <section class="footer-brand" aria-label="Informacion de Landenex">
+          <p class="footer-kicker">Landenex</p>
+          <h4>Carteleria e impresiones con impacto visual profesional</h4>
+          <p>
+            Diseno, produccion e instalacion para marcas que buscan destacarse
+            en calle, local y punto de venta.
+          </p>
+        </section>
+
+        <section class="footer-contact" aria-label="Datos de contacto">
+          <h5>Contacto</h5>
+          <ul>
+            <li>
+              <span class="footer-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 21.2C12 21.2 5.5 15.3 5.5 10.4C5.5 6.87 8.3 4 12 4C15.7 4 18.5 6.87 18.5 10.4C18.5 15.3 12 21.2 12 21.2Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="12" cy="10.2" r="2.3" stroke="currentColor" stroke-width="1.8"/>
+                </svg>
+              </span>
+              <span class="footer-contact-copy">
+                <span>Direccion</span>
+                <strong>Santiago de Chile 1101</strong>
+              </span>
+            </li>
+            <li>
+              <span class="footer-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6.5 4.8H9.3L10.7 8.4L8.9 9.6C9.7 11.3 11.1 12.7 12.8 13.5L14 11.7L17.6 13.1V15.9C17.6 16.7 16.9 17.4 16.1 17.4C10.8 17.4 6.5 13.1 6.5 7.8C6.5 7 7.2 6.3 8 6.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="footer-contact-copy">
+                <span>Telefonos</span>
+                <strong>29033533 · 29022825</strong>
+              </span>
+            </li>
+            <li>
+              <span class="footer-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="4" y="6.5" width="16" height="11" rx="2.2" stroke="currentColor" stroke-width="1.8"/>
+                  <path d="M5.2 8L12 12.8L18.8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="footer-contact-copy">
+                <span>Email</span>
+                <a href="mailto:info@landenex.com">info@landenex.com</a>
+              </span>
+            </li>
+          </ul>
+        </section>
+
+        <section class="footer-map" aria-label="Ubicacion del local">
+          <h5>Ubicacion</h5>
+          <div class="map-frame">
+            <iframe
+              title="Mapa de Landenex en Santiago de Chile 1101"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=Santiago%20de%20Chile%201101&output=embed"
+            ></iframe>
+          </div>
+        </section>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="year"></span> Landenex. Tu imagen sobre cualquier superficie.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
