@@ -36,8 +36,9 @@
         </button>
         <ul class="nav-links" id="menu-principal">
           <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#proyectos">Carteleria exterior</a></li>
-          <li><a href="#impresiones">Impresiones</a></li>
+          <li><a href="#galeria-trabajos">Galería</a></li>
+          <li><a href="#empresas">Empresas</a></li>
+          <li><a href="#cotizacion">Cotización</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
       </nav>
@@ -58,6 +59,7 @@
       <section class="product-gallery reveal" id="impresiones" aria-label="Galeria de productos">
         <h3 class="product-gallery-title">Tu imagen sobre cualquier superficie</h3>
         <div class="product-gallery-stage">
+          <div class="product-gallery-atmosphere" aria-hidden="true"></div>
           <figure class="product-shot is-active">
             <img class="product-shot-focus-low" src="img/proceso-01-diseno.jpg" alt="Fase de diseno conceptual para carteleria" loading="eager" />
           </figure>
@@ -91,100 +93,128 @@
         </div>
       </section>
 
-      <section class="cta container reveal" id="cotizar">
-        <a class="cta-button" href="#contacto">Solicita tu cotizacion</a>
+      <section class="work-gallery container reveal" id="galeria-trabajos" aria-label="Galeria filtrable de impresion digital y carteleria">
+        <div class="section-head">
+          <span></span>
+          <h3>Galería de impresión digital y cartelería</h3>
+          <span></span>
+        </div>
+
+        <div class="work-filters" role="group" aria-label="Filtros de galeria">
+          <button class="work-filter is-active" type="button" data-filter="all">Todo</button>
+          <button class="work-filter" type="button" data-filter="impresion-digital">Impresión digital</button>
+          <button class="work-filter" type="button" data-filter="carteleria">Cartelería</button>
+        </div>
+
+        <div class="work-grid" id="work-grid"></div>
+      </section>
+
+      <section class="trusted-brands container reveal" id="empresas" aria-label="Empresas que confian en nosotros">
+        <div class="section-head">
+          <span></span>
+          <h3>Empresas que confian en nosotros</h3>
+          <span></span>
+        </div>
+
+        <div class="brands-carousel" aria-label="Carrusel de empresas clientes">
+          <div class="brands-track" id="brands-track"></div>
+        </div>
       </section>
 
       <section class="contact container reveal" id="contacto">
-        <div>
-          <p class="kicker">Contacto</p>
-          <h3>Contanos que necesitás y te respondemos rapido</h3>
+        <div class="contact-intro">
+          <button class="contact-toggle" type="button" aria-expanded="false" aria-controls="contact-form-panel">
+            Solicita tu cotizacion
+          </button>
+          <h3>Contanos que necesitás y armamos tu propuesta</h3>
           <p>
-            Esta base ya esta lista para conectar con WhatsApp, formulario o tu
-            CRM comercial.
+            Dejanos tus datos y el tipo de proyecto. Te respondemos con una
+            propuesta clara para produccion, impresion o instalacion.
           </p>
+          <span id="cotizacion" aria-hidden="true"></span>
         </div>
-        <form class="contact-form">
-          <label>
-            Nombre
-            <input type="text" placeholder="Tu nombre" />
-          </label>
-          <label>
-            Email
-            <input type="email" placeholder="nombre@empresa.com" />
-          </label>
-          <label>
-            Proyecto
-            <textarea rows="4" placeholder="Contanos que tipo de cartel o impresion necesitas"></textarea>
-          </label>
-          <button type="button">Enviar consulta</button>
-        </form>
+        <div class="contact-form-card" id="contact-form-panel">
+          <form class="contact-form" action="https://formsubmit.co/info@landenex.com" method="POST">
+            <input type="hidden" name="_subject" value="Nueva solicitud de cotizacion - Landenex" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" id="contact-next" value="" />
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display: none" />
+            <p class="contact-feedback" id="contact-feedback" role="status" aria-live="polite"></p>
+            <label>
+              Nombre
+              <input type="text" name="nombre" placeholder="Tu nombre" autocomplete="name" required />
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" placeholder="nombre@empresa.com" autocomplete="email" required />
+            </label>
+            <label>
+              Proyecto
+              <textarea name="proyecto" rows="4" placeholder="Contanos que tipo de cartel o impresion necesitas" required></textarea>
+            </label>
+            <button type="submit">Enviar consulta</button>
+          </form>
+        </div>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-shell">
-        <section class="footer-brand" aria-label="Informacion de Landenex">
-          <p class="footer-kicker">Landenex</p>
-          <h4>Carteleria e impresiones con impacto visual profesional</h4>
-          <p>
-            Diseno, produccion e instalacion para marcas que buscan destacarse
-            en calle, local y punto de venta.
-          </p>
-        </section>
+        <article class="footer-panel" aria-label="Contacto y ubicacion de Landenex">
+          <section class="footer-contact" aria-label="Datos de contacto">
+            <h5>Contacto</h5>
+            <ul>
+              <li>
+                <span class="footer-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21.2C12 21.2 5.5 15.3 5.5 10.4C5.5 6.87 8.3 4 12 4C15.7 4 18.5 6.87 18.5 10.4C18.5 15.3 12 21.2 12 21.2Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="12" cy="10.2" r="2.3" stroke="currentColor" stroke-width="1.8"/>
+                  </svg>
+                </span>
+                <span class="footer-contact-copy">
+                  <span>Direccion</span>
+                  <strong>Santiago de Chile 1101</strong>
+                </span>
+              </li>
+              <li>
+                <span class="footer-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.5 4.8H9.3L10.7 8.4L8.9 9.6C9.7 11.3 11.1 12.7 12.8 13.5L14 11.7L17.6 13.1V15.9C17.6 16.7 16.9 17.4 16.1 17.4C10.8 17.4 6.5 13.1 6.5 7.8C6.5 7 7.2 6.3 8 6.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <span class="footer-contact-copy">
+                  <span>Telefonos</span>
+                  <strong>29033533 · 29022825</strong>
+                </span>
+              </li>
+              <li>
+                <span class="footer-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="4" y="6.5" width="16" height="11" rx="2.2" stroke="currentColor" stroke-width="1.8"/>
+                    <path d="M5.2 8L12 12.8L18.8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <span class="footer-contact-copy">
+                  <span>Email</span>
+                  <a href="mailto:info@landenex.com">info@landenex.com</a>
+                </span>
+              </li>
+            </ul>
+          </section>
 
-        <section class="footer-contact" aria-label="Datos de contacto">
-          <h5>Contacto</h5>
-          <ul>
-            <li>
-              <span class="footer-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 21.2C12 21.2 5.5 15.3 5.5 10.4C5.5 6.87 8.3 4 12 4C15.7 4 18.5 6.87 18.5 10.4C18.5 15.3 12 21.2 12 21.2Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                  <circle cx="12" cy="10.2" r="2.3" stroke="currentColor" stroke-width="1.8"/>
-                </svg>
-              </span>
-              <span class="footer-contact-copy">
-                <span>Direccion</span>
-                <strong>Santiago de Chile 1101</strong>
-              </span>
-            </li>
-            <li>
-              <span class="footer-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M6.5 4.8H9.3L10.7 8.4L8.9 9.6C9.7 11.3 11.1 12.7 12.8 13.5L14 11.7L17.6 13.1V15.9C17.6 16.7 16.9 17.4 16.1 17.4C10.8 17.4 6.5 13.1 6.5 7.8C6.5 7 7.2 6.3 8 6.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </span>
-              <span class="footer-contact-copy">
-                <span>Telefonos</span>
-                <strong>29033533 · 29022825</strong>
-              </span>
-            </li>
-            <li>
-              <span class="footer-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="4" y="6.5" width="16" height="11" rx="2.2" stroke="currentColor" stroke-width="1.8"/>
-                  <path d="M5.2 8L12 12.8L18.8 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </span>
-              <span class="footer-contact-copy">
-                <span>Email</span>
-                <a href="mailto:info@landenex.com">info@landenex.com</a>
-              </span>
-            </li>
-          </ul>
-        </section>
-
-        <section class="footer-map" aria-label="Ubicacion del local">
-          <h5>Ubicacion</h5>
-          <div class="map-frame">
-            <iframe
-              title="Mapa de Landenex en Santiago de Chile 1101"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps?q=Santiago%20de%20Chile%201101&output=embed"
-            ></iframe>
-          </div>
-        </section>
+          <section class="footer-map" aria-label="Ubicacion del local">
+            <h5>Ubicacion</h5>
+            <div class="map-frame">
+              <iframe
+                title="Mapa de Landenex en Santiago de Chile 1101"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q=Santiago%20de%20Chile%201101&output=embed"
+              ></iframe>
+            </div>
+          </section>
+        </article>
       </div>
 
       <div class="footer-bottom">
