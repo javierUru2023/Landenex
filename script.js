@@ -1,5 +1,15 @@
 document.body.classList.add("js-ready");
 
+const loadDecorativeBackground = () => {
+  document.documentElement.style.setProperty("--brand-bg-image", 'url("img/localLandenex.webp")');
+};
+
+if ("requestIdleCallback" in window) {
+  window.requestIdleCallback(loadDecorativeBackground, { timeout: 1800 });
+} else {
+  window.setTimeout(loadDecorativeBackground, 700);
+}
+
 const revealElements = document.querySelectorAll(".reveal");
 const productShots = document.querySelectorAll(".product-shot");
 const productShotImages = Array.from(productShots, (shot) => shot.querySelector("img")).filter(Boolean);
@@ -227,6 +237,9 @@ let currentWorkFilter = "all";
 let lastScrollY = window.scrollY;
 let workCardsObserver = null;
 let workRevealResizeRaf = 0;
+let projectsLoaded = false;
+let workItemsLoaded = false;
+let brandsLoaded = false;
 const workRowRevealTimers = new Map();
 const fallbackBrands = [
   { name: "Divino", image: "img/marcas/divinoLogo.png", alt: "Logo de Divino" },
@@ -479,7 +492,7 @@ const renderProjects = (projects) => {
     return;
   }
 
-  const buildCard = (project, isClone = false) => {
+  const buildCard = (project, index, isClone = false) => {
     const card = document.createElement("article");
     card.className = "project-card";
     if (isClone) {
@@ -492,7 +505,9 @@ const renderProjects = (projects) => {
     const image = document.createElement("img");
     image.src = project.image;
     image.alt = project.alt || project.title || "Producto diseñado";
-    image.loading = isClone ? "lazy" : "eager";
+    const shouldPrioritize = !isClone && index < 2;
+    image.loading = shouldPrioritize ? "eager" : "lazy";
+    image.fetchPriority = shouldPrioritize ? "high" : "low";
     image.decoding = "async";
     art.appendChild(image);
 
@@ -512,8 +527,8 @@ const renderProjects = (projects) => {
   };
 
   const fragment = document.createDocumentFragment();
-  projects.forEach((project) => fragment.appendChild(buildCard(project)));
-  projects.forEach((project) => fragment.appendChild(buildCard(project, true)));
+  projects.forEach((project, index) => fragment.appendChild(buildCard(project, index)));
+  projects.forEach((project, index) => fragment.appendChild(buildCard(project, index, true)));
 
   projectsTrack.innerHTML = "";
   projectsTrack.appendChild(fragment);
@@ -751,6 +766,7 @@ const renderWorkItems = (items) => {
     image.src = item.image;
     image.alt = item.alt;
     image.loading = "lazy";
+    image.fetchPriority = "low";
     image.decoding = "async";
 
     media.appendChild(image);
@@ -971,7 +987,9 @@ const renderBrands = (brands) => {
       logo.className = "brand-logo";
       logo.src = brandImage;
       logo.alt = brandAlt;
-      logo.loading = isClone ? "lazy" : "eager";
+      const shouldPrioritize = !isClone && index < 3;
+      logo.loading = shouldPrioritize ? "eager" : "lazy";
+      logo.fetchPriority = shouldPrioritize ? "high" : "low";
       logo.decoding = "async";
 
       const label = document.createElement("span");
@@ -1018,7 +1036,7 @@ const loadProjects = async () => {
   }
 
   try {
-    const response = await fetch("proyectos.json", { cache: "no-cache" });
+    const response = await fetch("proyectos.json");
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}`);
     }
@@ -1036,7 +1054,7 @@ const loadWorkItems = async () => {
   }
 
   try {
-    const response = await fetch("galeria.json", { cache: "no-cache" });
+    const response = await fetch("galeria.json");
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}`);
     }
@@ -1063,7 +1081,7 @@ const loadBrands = async () => {
   }
 
   try {
-    const response = await fetch("marcas.json", { cache: "no-cache" });
+    const response = await fetch("marcas.json");
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}`);
     }
@@ -1075,10 +1093,53 @@ const loadBrands = async () => {
   }
 };
 
-void loadProjects();
 setupWorkFilters();
-void loadWorkItems();
-void loadBrands();
+
+const whenElementNearViewport = (element, callback, rootMargin = "220px 0px") => {
+  if (!element || typeof callback !== "function") {
+    return;
+  }
+
+  if (!("IntersectionObserver" in window)) {
+    callback();
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      if (!entries[0]?.isIntersecting) return;
+      observer.disconnect();
+      callback();
+    },
+    { rootMargin }
+  );
+
+  observer.observe(element);
+};
+
+whenElementNearViewport(document.getElementById("proyectos"), () => {
+  if (projectsLoaded) {
+    return;
+  }
+  projectsLoaded = true;
+  void loadProjects();
+});
+
+whenElementNearViewport(document.getElementById("galeria-trabajos"), () => {
+  if (workItemsLoaded) {
+    return;
+  }
+  workItemsLoaded = true;
+  void loadWorkItems();
+});
+
+whenElementNearViewport(document.getElementById("empresas"), () => {
+  if (brandsLoaded) {
+    return;
+  }
+  brandsLoaded = true;
+  void loadBrands();
+});
 
 if (productShots.length > 1 && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
   const waitForGalleryImages = () => {

@@ -1,5 +1,5 @@
 :root {
-  --brand-bg-image: url("img/localLandenex.png");
+  --brand-bg-image: none;
   --brand-bg-position: center;
   --product-stage-fit-height: 380px;
   --blue-900: #0c3f8f;
