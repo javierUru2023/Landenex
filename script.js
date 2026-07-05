@@ -33,7 +33,7 @@ const fallbackProjects = [
     isNew: true,
   },
   {
-    title: "Letras de Espuma",
+    title: "Letras en Espuma",
     image: "img/proyectos/letras-espuma.webp",
     alt: "Letras corporeas en espuma para senaletica",
     isNew: true,
