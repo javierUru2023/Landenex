@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://javieruru2023.github.io/Landenex/sitemap.xml
