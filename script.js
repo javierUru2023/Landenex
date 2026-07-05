@@ -15,33 +15,57 @@ const contactNextInput = document.getElementById("contact-next");
 const contactFeedback = document.getElementById("contact-feedback");
 const fallbackProjects = [
   {
+    title: "DTF Textil",
+    image: "img/proyectos/dtf-textil.webp",
+    alt: "Aplicacion DTF textil en prendas",
+    isNew: true,
+  },
+  {
+    title: "DTF UV",
+    image: "img/proyectos/dtf-uv.webp",
+    alt: "Aplicacion DTF UV para superficies rigidas",
+    isNew: true,
+  },
+  {
+    title: "Impresion 3D",
+    image: "img/proyectos/impresion-3d.webp",
+    alt: "Pieza producida con tecnologia de impresion 3D",
+    isNew: true,
+  },
+  {
+    title: "Letras de Espuma",
+    image: "img/proyectos/letras-espuma.webp",
+    alt: "Letras corporeas en espuma para senaletica",
+    isNew: true,
+  },
+  {
     title: "Valla Publicitaria",
-    image: "img/proyectos/valla-publicitaria.jpg",
+    image: "img/proyectos/valla-publicitaria.webp",
     alt: "Valla publicitaria instalada en ruta",
   },
   {
     title: "Cartel de Fachada",
-    image: "img/proyectos/cartel-fachada.jpg",
+    image: "img/proyectos/cartel-fachada.webp",
     alt: "Cartel de fachada para local comercial",
   },
   {
     title: "Cartel de Obra",
-    image: "img/proyectos/cartel-obra.jpg",
+    image: "img/proyectos/cartel-obra.webp",
     alt: "Cartel de obra en estructura metalica",
   },
   {
     title: "Pantalla LED",
-    image: "img/proyectos/pantalla-led.jpg",
+    image: "img/proyectos/pantalla-led.webp",
     alt: "Pantalla led para publicidad exterior",
   },
   {
     title: "Totem Publicitario",
-    image: "img/proyectos/totem-publicitario.jpg",
+    image: "img/proyectos/totem-publicitario.webp",
     alt: "Totem publicitario de alto impacto",
   },
   {
     title: "Cartel de Ruta",
-    image: "img/proyectos/cartel-ruta.jpg",
+    image: "img/proyectos/cartel-ruta.webp",
     alt: "Cartel de ruta con grafica institucional",
   },
 ];
@@ -207,6 +231,8 @@ const workRowRevealTimers = new Map();
 const fallbackBrands = [
   { name: "Divino", image: "img/marcas/divinoLogo.png", alt: "Logo de Divino" },
   { name: "Ayax", image: "img/marcas/ayaxLogo.png", alt: "Logo de Ayax" },
+  { name: "Toyota", image: "img/marcas/toyotaLogo.png", alt: "Logo de Toyota" },
+  { name: "Suzuki", image: "img/marcas/suzukiLogo.png", alt: "Logo de Suzuki" },
   {
     name: "Intendencia de Montevideo",
     image: "img/marcas/immLogo.png",
@@ -333,11 +359,41 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       return;
     }
 
+    if (href === "#galeria-trabajos") {
+      event.preventDefault();
+      const target = document.querySelector(href);
+      if (!target) return;
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+
+    if (href === "#contacto" || href === "#cotizacion") {
+      event.preventDefault();
+      const fullDocumentHeight = Math.max(
+        document.body.scrollHeight,
+        document.documentElement.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.offsetHeight
+      );
+      const maxScrollTop = Math.max(0, fullDocumentHeight - window.innerHeight);
+      window.scrollTo({ top: maxScrollTop, behavior: "smooth" });
+      return;
+    }
+
     const target = document.querySelector(href);
     if (!target) return;
 
     event.preventDefault();
-    target.scrollIntoView({ behavior: "smooth", block: "start" });
+    const headerHeight = header ? header.getBoundingClientRect().height : 0;
+    const viewportHeight = window.innerHeight;
+    const availableHeight = Math.max(0, viewportHeight - headerHeight);
+    const targetRect = target.getBoundingClientRect();
+    const targetCenterY = window.scrollY + targetRect.top + targetRect.height / 2;
+    const desiredScrollTop = targetCenterY - (headerHeight + availableHeight / 2);
+    const maxScrollTop = Math.max(0, document.documentElement.scrollHeight - viewportHeight);
+    const clampedScrollTop = Math.min(maxScrollTop, Math.max(0, Math.round(desiredScrollTop)));
+
+    window.scrollTo({ top: clampedScrollTop, behavior: "smooth" });
   });
 });
 
@@ -435,13 +491,20 @@ const renderProjects = (projects) => {
 
     const image = document.createElement("img");
     image.src = project.image;
-    image.alt = project.alt || project.title || "Proyecto reciente";
+    image.alt = project.alt || project.title || "Producto diseñado";
     image.loading = isClone ? "lazy" : "eager";
     image.decoding = "async";
     art.appendChild(image);
 
+    if (project.isNew) {
+      const badge = document.createElement("span");
+      badge.className = "project-badge";
+      badge.textContent = "Novedad";
+      art.appendChild(badge);
+    }
+
     const title = document.createElement("h4");
-    title.textContent = project.title || "Proyecto";
+    title.textContent = project.title || "Producto";
 
     card.appendChild(art);
     card.appendChild(title);
@@ -777,6 +840,11 @@ const setupBrandsCarousel = () => {
   let currentIndex = 0;
   let stepSize = getStepSize();
   const allCards = Array.from(brandsTrack.querySelectorAll(".brand-pill"));
+  const syncTimerState = (value) => {
+    if (brandsCarouselState) {
+      brandsCarouselState.timerId = value;
+    }
+  };
 
   const getMotionProfile = () => {
     const isDesktop = window.innerWidth > 900;
@@ -837,14 +905,17 @@ const setupBrandsCarousel = () => {
 
   const startTimer = () => window.setInterval(tick, motionProfile.intervalMs);
   let timerId = startTimer();
+  syncTimerState(timerId);
 
   const onMouseEnter = () => {
     window.clearInterval(timerId);
+    syncTimerState(timerId);
   };
 
   const onMouseLeave = () => {
     window.clearInterval(timerId);
     timerId = startTimer();
+    syncTimerState(timerId);
   };
 
   const onResize = () => {
@@ -852,6 +923,7 @@ const setupBrandsCarousel = () => {
     motionProfile = getMotionProfile();
     window.clearInterval(timerId);
     timerId = startTimer();
+    syncTimerState(timerId);
     moveToIndex(currentIndex, false);
   };
 
@@ -891,6 +963,9 @@ const renderBrands = (brands) => {
 
       const logoWrap = document.createElement("span");
       logoWrap.className = "brand-logo-wrap";
+      if (/^(ayax|canal 10)$/i.test(brandName.trim())) {
+        logoWrap.classList.add("has-tinted-backdrop");
+      }
 
       const logo = document.createElement("img");
       logo.className = "brand-logo";

@@ -10,6 +10,16 @@
     "alt": "Logo de Ayax"
   },
   {
+    "name": "Toyota",
+    "image": "img/marcas/toyotaLogo.png",
+    "alt": "Logo de Toyota"
+  },
+  {
+    "name": "Suzuki",
+    "image": "img/marcas/suzukiLogo.png",
+    "alt": "Logo de Suzuki"
+  },
+  {
     "name": "Intendencia de Montevideo",
     "image": "img/marcas/immLogo.png",
     "alt": "Logo de la Intendencia de Montevideo"

@@ -1,32 +1,56 @@
 [
   {
+    "title": "DTF Textil",
+    "image": "img/proyectos/dtf-textil.webp",
+    "alt": "Aplicacion DTF textil en prendas",
+    "isNew": true
+  },
+  {
+    "title": "DTF UV",
+    "image": "img/proyectos/dtf-uv.webp",
+    "alt": "Aplicacion DTF UV para superficies rigidas",
+    "isNew": true
+  },
+  {
+    "title": "Impresion 3D",
+    "image": "img/proyectos/impresion-3d.webp",
+    "alt": "Pieza producida con tecnologia de impresion 3D",
+    "isNew": true
+  },
+  {
+    "title": "Letras de Espuma",
+    "image": "img/proyectos/letras-espuma.webp",
+    "alt": "Letras corporeas en espuma para senaletica",
+    "isNew": true
+  },
+  {
     "title": "Valla Publicitaria",
-    "image": "img/proyectos/valla-publicitaria.jpg",
+    "image": "img/proyectos/valla-publicitaria.webp",
     "alt": "Valla publicitaria instalada en ruta"
   },
   {
     "title": "Cartel de Fachada",
-    "image": "img/proyectos/cartel-fachada.jpg",
+    "image": "img/proyectos/cartel-fachada.webp",
     "alt": "Cartel de fachada para local comercial"
   },
   {
     "title": "Cartel de Obra",
-    "image": "img/proyectos/cartel-obra.jpg",
+    "image": "img/proyectos/cartel-obra.webp",
     "alt": "Cartel de obra en estructura metalica"
   },
   {
     "title": "Pantalla LED",
-    "image": "img/proyectos/pantalla-led.jpg",
+    "image": "img/proyectos/pantalla-led.webp",
     "alt": "Pantalla led para publicidad exterior"
   },
   {
     "title": "Totem Publicitario",
-    "image": "img/proyectos/totem-publicitario.jpg",
+    "image": "img/proyectos/totem-publicitario.webp",
     "alt": "Totem publicitario de alto impacto"
   },
   {
     "title": "Cartel de Ruta",
-    "image": "img/proyectos/cartel-ruta.jpg",
+    "image": "img/proyectos/cartel-ruta.webp",
     "alt": "Cartel de ruta con grafica institucional"
   }
 ]
